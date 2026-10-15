@@ -1,0 +1,14 @@
+# SpaceFlow — Archivos que no se versionan
+
+# Credenciales de base de datos (existe config.ejemplo.php como plantilla)
+/app/config/conexion.php
+
+# Registros de actividad (se generan en tiempo de ejecución)
+/logs/*.log
+
+# Sistema y editores
+Thumbs.db
+.DS_Store
+*.swp
+.idea/
+.vscode/

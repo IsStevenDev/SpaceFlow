@@ -1,0 +1,10 @@
+# SpaceFlow — Protección del código fuente (app/).
+# Aunque está fuera del directorio público, se bloquea por si alguien
+# apunta el DocumentRoot a la raíz del proyecto por error.
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+</IfModule>

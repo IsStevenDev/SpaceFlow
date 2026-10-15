@@ -1,0 +1,20 @@
+# SpaceFlow — Configuración de Apache para el directorio público.
+# Este es el único directorio que debe ser accesible por URL.
+
+# Oculta el listado de directorios.
+Options -Indexes
+
+# Codificación por defecto.
+AddDefaultCharset UTF-8
+
+# Bloquea el acceso directo a archivos de respaldo o documentación
+# que pudieran colarse en public/.
+<FilesMatch "\.(log|sql|md|ini|bak|old|dist)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
