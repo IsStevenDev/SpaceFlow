@@ -47,7 +47,10 @@ class AuthController
             // no revela si el correo existe o no.
             $_SESSION['login_error'] = $e->getMessage();
         } catch (ConexionException $e) {
-            Logger::porDefecto()->error('Falló la conexión al iniciar sesión: ' . $e->getMessage());
+            Logger::porDefecto()->error(
+                'Falló la conexión al iniciar sesión: ' . $e->getMessage()
+                . ($e->getPrevious() !== null ? ' | Detalle: ' . $e->getPrevious()->getMessage() : '')
+            );
             $_SESSION['login_error'] = 'El servicio no está disponible en este momento. Intenta más tarde.';
         }
     }

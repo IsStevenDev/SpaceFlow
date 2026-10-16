@@ -46,11 +46,15 @@ base, con hoja de estilo personalizada).
      C:\xampp\mysql\bin\mysql.exe -u root --default-character-set=utf8mb4 < C:\xampp\htdocs\SpaceFlow\database\base_datos.sql
      ```
 
-4. **Revisar las credenciales de la base de datos** en
-   `app/config/conexion.php`. La plantilla incluida apunta a los valores por
-   defecto de XAMPP (`root`, sin contraseña, `127.0.0.1:3306`). Si tu
-   MySQL usa otro usuario o clave, ajústalo ahí (hay un ejemplo comentado en
-   `database/config.ejemplo.php`).
+4. **Crear el archivo de credenciales**. No viaja en el repositorio (contiene
+   datos de acceso); copia la plantilla incluida:
+
+   ```
+   copy database\config.ejemplo.php app\config\conexion.php
+   ```
+
+   Apunta por defecto a los valores de XAMPP (`root`, sin contraseña,
+   `127.0.0.1:3306`); si tu MySQL usa otro usuario o clave, ajústalo ahí.
 
 5. **Abrir la aplicación**:
 
@@ -59,6 +63,11 @@ base, con hoja de estilo personalizada).
    ```
 
 6. Iniciar sesión con las credenciales de la sección siguiente.
+
+> ⚠️ **¿Aparece "El servicio no está disponible en este momento" al iniciar
+> sesión?** Casi siempre significa que falta `app/config/conexion.php` (paso 4)
+> o que la base de datos no fue importada (paso 3). El detalle exacto queda en
+> `logs/aplicacion.log`.
 
 > Si renombras la carpeta `SpaceFlow`, cambia la constante `BASE_URL` en
 > `app/config/config.php` (por ejemplo `/MiProyecto/public`).

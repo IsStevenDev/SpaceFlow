@@ -36,7 +36,10 @@ class Database
         if (self::$conexion === null) {
             $archivo = __DIR__ . '/conexion.php';
             if (!is_file($archivo)) {
-                throw new ConexionException('Archivo de configuración de base de datos ausente.');
+                throw new ConexionException(
+                    'Falta el archivo app/config/conexion.php: copia database/config.ejemplo.php '
+                    . 'como app/config/conexion.php y ajusta los valores (ver README, paso 4).'
+                );
             }
             /** @var array{dsn:string, usuario:string, clave:string, opciones:array} $config */
             $config = require $archivo;
